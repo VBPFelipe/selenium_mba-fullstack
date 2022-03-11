@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>restAssured-class</groupId>
+	<artifactId>restAssured-class</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<java-compiler.version>17</java-compiler.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<allure.results.directory>allure-results</allure.results.directory>
+		<allure.report.directory>allure-report</allure.report.directory>
+
+		<restassured.version>4.4.0</restassured.version>
+		<junit.jupiter.version>5.8.2</junit.jupiter.version>
+		<assertj.version>3.21.0</assertj.version>
+		<slf4j.version>2.0.0-alpha1</slf4j.version>
+		<allure.version>2.15.0</allure.version>
+		<allure-maven.version>2.10.0</allure-maven.version>
+		<allure.cmd.download.url>
+			https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
+		</allure.cmd.download.url>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${restassured.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>${restassured.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-attachments</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-junit5</artifactId>
+			<version>${allure.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+			<plugin>
+				<groupId>io.qameta.allure</groupId>
+				<artifactId>allure-maven</artifactId>
+				<version>${allure-maven.version}</version>
+				<configuration>
+					<reportVersion>${allure.version}</reportVersion>
+					<allureDownloadUrl>
+						${allure.cmd.download.url}/${allure.version}/allure-commandline-${allure.version}.zip
+					</allureDownloadUrl>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
